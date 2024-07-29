@@ -24,10 +24,13 @@
           <a href="#">Forgot password?</a>
         </div>
         <button type="submit">Sign in</button>
-        <button id="signinWGoogle">
-          <img src="../assets/googleIcon.png" alt="" srcset="">
-          <span>Sign In With Google</span> 
-        </button>
+       <GoogleLogin 
+      :client-id="CLIENT_ID"
+      :scope="scope"
+      :callback="callback" 
+      prompt 
+      auto-login
+    />
         <p class="signUp">Don’t have an account? 
           <a href="">Sign up fo free!</a>
         </p>
@@ -41,7 +44,20 @@
 
 <script setup>
 // import logo from '../assets/logo.png';
-
+const CLIENT_ID = "750236939237-rhaii2cs23jgmmqsp487hq47mv6nre5i.apps.googleusercontent.com"
+const scope = 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
+import { decodeCredential } from 'vue3-google-login'
+const callback = (response) => {
+  if (response.error) {
+    console.error(response.error);
+  } else {
+    const userData = decodeCredential(response.credential)
+    console.log("Handle the userData", userData)
+    const { accessToken, profileObj } = response;
+    console.log(accessToken, profileObj);
+    // Authenticate the user and authorize access to your application
+}
+  }
 import { ref } from 'vue';
     
 let username = ref('');

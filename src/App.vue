@@ -1,29 +1,13 @@
 <template>
   <div id="app">
-<GoogleLogin 
-      :client-id="CLIENT_ID"
-      :scope="scope"
-      :callback="callback" 
-      prompt 
-      auto-login
-    />
+
     <LoginForm />
   </div>
 </template>
 
 <script setup>
 import LoginForm from './components/LoginForm.vue'
-const CLIENT_ID = "750236939237-rhaii2cs23jgmmqsp487hq47mv6nre5i.apps.googleusercontent.com"
-const scope = 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
- const callback = (response) => {
-     if (response.error) {
-    console.error(response.error);
-  } else {
-    const { accessToken, profileObj } = response;
-    console.log(accessToken, profileObj);
-    // Authenticate the user and authorize access to your application
-}
-  }
+
 </script>
 
 <style>
