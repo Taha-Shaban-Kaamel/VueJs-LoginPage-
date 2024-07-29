@@ -24,14 +24,20 @@
           <a href="#">Forgot password?</a>
         </div>
         <button type="submit">Sign in</button>
-       <GoogleLogin 
+        <GoogleLogin 
       :client-id="CLIENT_ID"
       :scope="scope"
       :callback="callback" 
       prompt 
       auto-login
-    />
-        <p class="signUp">Don’t have an account? 
+    >
+    <button id="signinWGoogle">
+      <img src="../assets/googleIcon.png" alt="" srcset="">
+      <span>Sign In With Google</span> 
+    </button>
+    
+  </GoogleLogin >
+    <p class="signUp">Don’t have an account? 
           <a href="">Sign up fo free!</a>
         </p>
       </form>
@@ -41,7 +47,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 // import logo from '../assets/logo.png';
 const CLIENT_ID = "750236939237-rhaii2cs23jgmmqsp487hq47mv6nre5i.apps.googleusercontent.com"
@@ -70,6 +75,7 @@ let handleSubmit = () => {
   
 
 </script>
+
 
 <style scoped>
 
